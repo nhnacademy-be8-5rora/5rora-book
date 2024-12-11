@@ -15,17 +15,19 @@ import java.util.Optional;
 public class PublisherService {
     private final PublisherRepository publisherRepository;
 
+    public Publisher findOrCreatePublisher(String publisherName) {
+        return publisherRepository.findByName(publisherName)
+                .orElseGet(() -> {
+                    Publisher newPublisher = new Publisher();
+                    newPublisher.setName(publisherName);
+                    return publisherRepository.save(newPublisher);
+                });
+    }
+
     public List<Publisher> findAll() {
         return publisherRepository.findAll();
     }
 
-    public Optional<Publisher> findById(Long id) {
-        return publisherRepository.findById(id);
-    }
-
-    public Publisher save(Publisher publisher) {
-        return publisherRepository.save(publisher);
-    }
 
     public void deleteById(Long id) {
         publisherRepository.deleteById(id);

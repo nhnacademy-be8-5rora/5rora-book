@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -21,17 +21,21 @@ public class Book {
     private Long id;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private int regularPrice;
 
     @Column(nullable = false)
     private int salePrice;
 
-    private Boolean packaging = false;
-
     private Integer stock = 100;
 
     @Column(nullable = false)
-    private String title;
+    private boolean isSale;
+
+    @Column(length = 15)
+    private String isbn;
 
     @Column(columnDefinition = "TEXT")
     private String contents;
@@ -39,14 +43,11 @@ public class Book {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String explanation;
 
-    @Column(length = 15)
-    private String isbn;
+    private Boolean packaging = false;
 
     @Column(nullable = false)
-    private Date publishDate;
+    private LocalDate publishDate;
 
-    @Column(nullable = false)
-    private boolean isSale;
 
     @ManyToOne
     @JoinColumn(name = "publisher_id", nullable = false)

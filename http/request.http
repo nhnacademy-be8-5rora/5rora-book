@@ -1,0 +1,18 @@
+## 책 등록
+POST localhost:8083/api/books
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "regularPrice": 35000,
+  "salePrice": 30000,
+  "packaging": false,
+  "stock": 50,
+  "explanation": "해피",
+  "contents": "크리스마스",
+  "isbn": "9780132350884",
+  "publishDate": "2008-08-11",
+  "isSale": true,
+  "publisherName": "ksc",
+  "seriesName": null
+}

@@ -3,5 +3,9 @@ package store.aurora.book.book.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import store.aurora.book.book.entity.Series;
 
-public interface SeriesRepository extends JpaRepository<Series, Long> {}
+import java.util.Optional;
+
+public interface SeriesRepository extends JpaRepository<Series, Long> {
+    Optional<Series> findByName(String name);
+}
 
